@@ -1,0 +1,306 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<com.partworm.sodakey.view.HangulKeyboard xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:keyview="http://schemas.android.com/apk/res-auto"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#FFFFFF"
+    android:theme="@style/AppTheme">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/keyboard_base"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:background="#FFFFFF">
+
+        <android.widget.Space
+            android:id="@+id/gap_center"
+            android:layout_width="40dp"
+            android:layout_height="180dp"
+            app:layout_constraintBottom_toTopOf="@+id/key_bottom_1"
+            app:layout_constraintEnd_toStartOf="@+id/key_right_1"
+            app:layout_constraintStart_toEndOf="@+id/key_left_2"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/margin_left"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_begin="24dp" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/margin_right"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_end="24dp" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/margin_bottom"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_end="40dp" />
+
+        <!-- bottom 1 -->
+        <com.partworm.sodakey.view.FlickKeyView
+            android:id="@+id/key_bottom_1"
+            android:layout_width="60dp"
+            android:layout_height="45dp"
+            android:layout_marginTop="4dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:text="@string/caption_exclamation_mark"
+            app:layout_constraintBottom_toTopOf="@+id/margin_bottom"
+            app:layout_constraintEnd_toStartOf="@+id/key_bottom_2"
+            app:layout_constraintStart_toStartOf="@+id/key_left_7"
+            app:layout_constraintTop_toBottomOf="@+id/gap_center"
+            keyview:key_src="'!'" />
+
+        <!-- bottom 2 -->
+        <com.partworm.sodakey.view.FlickKeyView
+            android:id="@+id/key_bottom_2"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="4dp"
+            android:text="@string/caption_space"
+            app:layout_constraintBottom_toBottomOf="@+id/key_bottom_1"
+            app:layout_constraintEnd_toStartOf="@+id/key_bottom_3"
+            app:layout_constraintStart_toEndOf="@+id/key_bottom_1"
+            app:layout_constraintTop_toTopOf="@+id/key_bottom_1"
+            keyview:key_src="' '" />
+
+        <!-- bottom 3 -->
+        <com.partworm.sodakey.view.FlickKeyView
+            android:id="@+id/key_bottom_3"
+            android:layout_width="50dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="4dp"
+            android:text="@string/caption_shortcut"
+            app:layout_constraintBottom_toBottomOf="@+id/key_bottom_2"
+            app:layout_constraintEnd_toStartOf="@+id/key_bottom_4"
+            app:layout_constraintStart_toEndOf="@+id/key_bottom_2"
+            app:layout_constraintTop_toTopOf="@+id/key_bottom_2"
+            keyview:key_src="'ㅋㅋㅋ'" />
+
+        <!-- bottom 4 -->
+        <com.partworm.sodakey.view.FlickKeyView
+            android:id="@+id/key_bottom_4"
+            android:layout_width="50dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="4dp"
+            android:text="@string/caption_locale_english"
+            app:layout_constraintBottom_toBottomOf="@+id/key_bottom_3"
+            app:layout_constraintEnd_toEndOf="@+id/key_right_8"
+            app:layout_constraintStart_toEndOf="@+id/key_bottom_3"
+            app:layout_constraintTop_toTopOf="@+id/key_bottom_3"
+            keyview:key_src="con(0)" />
+
+        <!-- left 1 -->
+        <com.partworm.sodakey.view.FlickKeyView
+            android:id="@+id/key_left_1"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="4dp"
+            android:text="@string/caption_giyeok"
+            app:layout_constraintBottom_toTopOf="@+id/key_left_3"
+            app:layout_constraintEnd_toStartOf="@+id/key_left_2"
+            app:layout_constraintHorizontal_chainStyle="spread"
+            app:layout_constraintStart_toEndOf="@+id/margin_left"
+            app:layout_constraintTop_toTopOf="@+id/gap_center"
+            app:layout_constraintVertical_chainStyle="spread"
+            keyview:key_src="(con(0) con(15) con(15) con(1) con(0))" />
+
+        <!-- left 2 -->
+        <com.partworm.sodakey.view.FlickKeyView
+            android:id="@+id/key_left_2"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="4dp"
+            android:text="@string/caption_nieun"
+            app:layout_constraintBottom_toBottomOf="@+id/key_left_1"
+            app:layout_constraintEnd_toStartOf="@+id/gap_center"
+            app:layout_constraintStart_toEndOf="@+id/key_left_1"
+            app:layout_constraintTop_toTopOf="@+id/key_left_1"
+            keyview:key_src="(con(2) con(16) con(16) con(4) con(3))" />
+
+        <!-- left 3 -->
+        <com.partworm.sodakey.view.FlickKeyView
+            android:id="@+id/key_left_3"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="4dp"
+            android:text="@string/caption_rieul"
+            app:layout_constraintBottom_toTopOf="@+id/key_left_5"
+            app:layout_constraintEnd_toEndOf="@+id/key_left_1"
+            app:layout_constraintStart_toStartOf="@+id/key_left_1"
+            app:layout_constraintTop_toBottomOf="@+id/key_left_1"
+            keyview:key_src="con(5)" />
+
+        <!-- left 4 -->
+        <com.partworm.sodakey.view.FlickKeyView
+            android:id="@+id/key_left_4"
+            keyview:key_src="(con(6) con(17) con(17) con(8) con(7))"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintStart_toStartOf="@+id/key_left_2"
+            app:layout_constraintEnd_toEndOf="@+id/key_left_2"
+            app:layout_constraintTop_toTopOf="@+id/key_left_3"
+            app:layout_constraintBottom_toBottomOf="@+id/key_left_3"
+            android:text="@string/caption_mieum" />
+
+        <!-- left 5 -->
+        <com.partworm.sodakey.view.FlickKeyView
+            android:id="@+id/key_left_5"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="4dp"
+            android:text="@string/caption_siot"
+            app:layout_constraintBottom_toTopOf="@+id/key_left_7"
+            app:layout_constraintEnd_toEndOf="@+id/key_left_3"
+            app:layout_constraintStart_toStartOf="@+id/key_left_3"
+            app:layout_constraintTop_toBottomOf="@+id/key_left_3"
+            keyview:key_src="(con(9) con(0) con(0) con(10) con(0))" />
+
+        <!-- left 6 -->
+        <com.partworm.sodakey.view.FlickKeyView
+            android:id="@+id/key_left_6"
+            keyview:key_src="con(11)"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintStart_toStartOf="@+id/key_left_4"
+            app:layout_constraintEnd_toEndOf="@+id/key_left_4"
+            app:layout_constraintTop_toTopOf="@+id/key_left_5"
+            app:layout_constraintBottom_toBottomOf="@+id/key_left_5"
+            android:text="@string/caption_ieung" />
+
+        <!-- left 7 -->
+        <com.partworm.sodakey.view.FlickKeyView
+            android:id="@+id/key_left_7"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="4dp"
+            android:text="@string/caption_jieut"
+            app:layout_constraintBottom_toBottomOf="@+id/gap_center"
+            app:layout_constraintEnd_toEndOf="@+id/key_left_5"
+            app:layout_constraintStart_toStartOf="@+id/key_left_5"
+            app:layout_constraintTop_toBottomOf="@+id/key_left_5"
+            keyview:key_src="(con(12) con(14) con(14) con(13) con(0))" />
+
+        <!-- left 8 -->
+        <com.partworm.sodakey.view.FlickKeyView
+            android:id="@+id/key_left_8"
+            keyview:key_src="con(18)"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintStart_toStartOf="@+id/key_left_6"
+            app:layout_constraintEnd_toEndOf="@+id/key_left_6"
+            app:layout_constraintTop_toTopOf="@+id/key_left_7"
+            app:layout_constraintBottom_toBottomOf="@+id/key_left_7"
+            android:text="@string/caption_hieut" />
+
+        <!-- right 1 -->
+        <com.partworm.sodakey.view.FlickKeyView
+            android:id="@+id/key_right_1"
+            keyview:key_src="(vowel(19) vowel(14) vowel(9) vowel(11) vowel(16))"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintStart_toEndOf="@+id/gap_center"
+            app:layout_constraintEnd_toStartOf="@+id/key_right_2"
+            app:layout_constraintTop_toTopOf="@+id/key_left_1"
+            app:layout_constraintBottom_toBottomOf="@+id/key_left_2"
+            android:text="@string/caption_ui" />
+
+        <!-- right 2 -->
+        <com.partworm.sodakey.view.BackspaceKeyView
+            android:id="@+id/key_right_2"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="4dp"
+            android:text="@string/caption_backspace"
+            app:layout_constraintBottom_toBottomOf="@+id/key_right_1"
+            app:layout_constraintEnd_toStartOf="@+id/margin_right"
+            app:layout_constraintStart_toEndOf="@+id/key_right_1"
+            app:layout_constraintTop_toTopOf="@+id/key_right_1" />
+
+        <!-- right 3 -->
+        <com.partworm.sodakey.view.FlickKeyView
+            android:id="@+id/key_right_3"
+            keyview:key_src="(vowel(20) vowel(4) vowel(0) vowel(8) vowel(13))"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintStart_toStartOf="@+id/key_right_1"
+            app:layout_constraintEnd_toEndOf="@+id/key_right_1"
+            app:layout_constraintTop_toTopOf="@+id/key_left_4"
+            app:layout_constraintBottom_toBottomOf="@+id/key_left_4"
+            android:text="@string/caption_i" />
+
+        <!-- right 4 -->
+        <com.partworm.sodakey.view.FlickKeyView
+            android:id="@+id/key_right_4"
+            keyview:key_src="('?' nil nil '!' nil)"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintStart_toStartOf="@+id/key_right_2"
+            app:layout_constraintEnd_toEndOf="@+id/key_right_2"
+            app:layout_constraintTop_toTopOf="@+id/key_right_3"
+            app:layout_constraintBottom_toBottomOf="@+id/key_right_3"
+            android:text="@string/caption_question_mark" />
+
+        <!-- right 5 -->
+        <com.partworm.sodakey.view.FlickKeyView
+            android:id="@+id/key_right_5"
+            keyview:key_src="(vowel(18) (vowel(5) nil vowel(7) nil nil) (vowel(1) vowel(3) nil nil nil) vowel(10) vowel(15))"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintStart_toStartOf="@+id/key_right_3"
+            app:layout_constraintEnd_toEndOf="@+id/key_right_3"
+            app:layout_constraintTop_toTopOf="@+id/key_left_6"
+            app:layout_constraintBottom_toBottomOf="@+id/key_left_6"
+            android:text="@string/caption_eu" />
+
+        <!-- right 6 -->
+        <com.partworm.sodakey.view.FlickKeyView
+            android:id="@+id/key_right_6"
+            keyview:key_src="('.' ',' nil nil '·')"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintStart_toStartOf="@+id/key_right_4"
+            app:layout_constraintEnd_toEndOf="@+id/key_right_4"
+            app:layout_constraintTop_toTopOf="@+id/key_right_5"
+            app:layout_constraintBottom_toBottomOf="@+id/key_right_5"
+            android:text="@string/caption_period" />
+
+        <!-- right 7 -->
+        <com.partworm.sodakey.view.FlickKeyView
+            android:id="@+id/key_right_7"
+            keyview:key_src="(con(0) vowel(6) vowel(2) vowel(12) vowel(17))"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintStart_toStartOf="@+id/key_right_5"
+            app:layout_constraintEnd_toEndOf="@+id/key_right_5"
+            app:layout_constraintBottom_toBottomOf="@+id/gap_center"
+            app:layout_constraintTop_toTopOf="@+id/key_left_8"
+            android:text="@string/caption_double_dot" />
+
+        <!-- right 8 -->
+        <com.partworm.sodakey.view.FlickKeyView
+            android:id="@+id/key_right_8"
+            keyview:key_src="'nl'"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintStart_toStartOf="@+id/key_right_6"
+            app:layout_constraintEnd_toEndOf="@+id/key_right_6"
+            app:layout_constraintTop_toTopOf="@+id/key_right_7"
+            app:layout_constraintBottom_toBottomOf="@+id/key_right_7"
+            android:text="@string/caption_enter" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</com.partworm.sodakey.view.HangulKeyboard>

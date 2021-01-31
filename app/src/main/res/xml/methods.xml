@@ -1,0 +1,14 @@
+<input-method xmlns:android="http://schemas.android.com/apk/res/android"
+    android:settingsActivity="com.partworm.draggy.Settings">
+
+    <subtype
+        android:name="한국어"
+        android:imeSubtypeLocale="ko_KR"
+        android:imeSubtypeMode="keyboard" />
+
+    <subtype
+        android:name="영어"
+        android:imeSubtypeLocale="en_US"
+        android:imeSubtypeMode="keyboard" />
+
+</input-method>

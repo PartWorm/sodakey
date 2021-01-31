@@ -1,0 +1,28 @@
+<resources>
+
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="buttonStyle">@style/PlainKeyPrimary</item>
+    </style>
+
+    <style name="PlainKeyPrimary" parent="Widget.AppCompat.Button.Borderless">
+        <item name="android:background">@drawable/something_empty</item>
+        <item name="android:textAppearance">@style/TextAppearance.App.KeyCaptionPrimary</item>
+    </style>
+
+    <style name="PlainKeySecondary" parent="Widget.AppCompat.Button.Borderless">
+        <item name="android:background">@drawable/something_empty</item>
+        <item name="android:textAppearance">@style/TextAppearance.App.KeyCaptionSecondary</item>
+    </style>
+
+    <style name="TextAppearance.App.KeyCaptionPrimary" parent="TextAppearance.AppCompat.Medium">
+        <item name="android:textColor">#FFF</item>
+    </style>
+
+    <style name="TextAppearance.App.KeyCaptionSecondary" parent="TextAppearance.AppCompat.Medium">
+        <item name="android:textColor">#FFF</item>
+    </style>
+
+</resources>

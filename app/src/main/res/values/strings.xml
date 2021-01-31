@@ -1,0 +1,28 @@
+<resources>
+
+    <string name="app_name">Sodakey</string>
+
+    <string name="caption_giyeok">ㄱ</string>
+    <string name="caption_nieun">ㄴ</string>
+    <string name="caption_rieul">ㄹ</string>
+    <string name="caption_mieum">ㅁ</string>
+    <string name="caption_siot">ㅅ</string>
+    <string name="caption_ieung">ㅇ</string>
+    <string name="caption_jieut">ㅈ</string>
+    <string name="caption_hieut">ㅎ</string>
+
+    <string name="caption_ui">ㅢ</string>
+    <string name="caption_i">ㅣ</string>
+    <string name="caption_eu">ㅡ</string>
+    <string name="caption_double_dot">‥</string>
+
+    <string name="caption_backspace">⌫</string>
+    <string name="caption_enter">⎆</string>
+    <string name="caption_exclamation_mark">!</string>
+    <string name="caption_locale_english">ABC</string>
+    <string name="caption_period">.</string>
+    <string name="caption_question_mark">\?</string>
+    <string name="caption_shortcut">ㅋ³</string>
+    <string name="caption_space">␣</string>
+
+</resources>
