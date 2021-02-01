@@ -20,7 +20,7 @@ class FlickKeyView : KeyView {
   override fun init(context: Context, attrs: AttributeSet?) {
     super.init(context, attrs)
     val typedArray = context.obtainStyledAttributes(attrs, R.styleable.KeyView)
-    val src = typedArray.getString(R.styleable.KeyView_key_src)
+    val src = typedArray.getString(R.styleable.KeyView_key_src)!!
     typedArray.recycle()
     automata = GestureAutomata(KeyLiteralParser(src).parse())
   }
@@ -39,10 +39,14 @@ class FlickKeyView : KeyView {
       }
       MotionEvent.ACTION_MOVE -> {
         automata!!.move(e.rawX.toInt(), e.rawY.toInt())
+        v.translationX = automata!!.diffX.toFloat() / 5
+        v.translationY = automata!!.diffY.toFloat() / 5
         true
       }
       MotionEvent.ACTION_UP -> {
         keyboard?.keyRearranger?.releaseOne()
+        v.translationX = 0f
+        v.translationY = 0f
         false
       }
       else -> {
@@ -50,4 +54,5 @@ class FlickKeyView : KeyView {
       }
     }
   }
+
 }

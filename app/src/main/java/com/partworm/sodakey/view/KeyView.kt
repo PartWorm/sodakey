@@ -31,10 +31,14 @@ abstract class KeyView : AppCompatButton, OnTouchListener {
     return when (e.action) {
       MotionEvent.ACTION_DOWN -> {
         v.isPressed = true
+        v.scaleX = 0.95f
+        v.scaleY = 0.95f
         true
       }
       MotionEvent.ACTION_UP -> {
         v.isPressed = false
+        v.scaleX = 1f
+        v.scaleY = 1f
         false
       }
       else -> {

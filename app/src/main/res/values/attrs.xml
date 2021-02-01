@@ -5,6 +5,6 @@
         <attr name="key_src" format="string" />
     </declare-styleable>
 
-    <declare-styleable name="FlickKeyView" parent="@declare-styleable/KeyView"></declare-styleable>
+    <declare-styleable name="FlickKeyView" parent="@declare-styleable/KeyView" />
 
 </resources>
