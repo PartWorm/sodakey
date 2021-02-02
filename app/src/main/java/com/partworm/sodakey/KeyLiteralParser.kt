@@ -1,9 +1,11 @@
 package com.partworm.sodakey
 
-import com.partworm.sodakey.keyaction.ConsonantTypingKeyAction
+import com.partworm.sodakey.flick.FlickNode
+import com.partworm.sodakey.hangul.keyaction.ConsonantTypingKeyAction
 import com.partworm.sodakey.keyaction.KeyAction
 import com.partworm.sodakey.keyaction.StringTypingKeyAction
-import com.partworm.sodakey.keyaction.VowelTypingKeyAction
+import com.partworm.sodakey.hangul.keyaction.VowelTypingKeyAction
+import com.partworm.sodakey.keyaction.EnterKeyAction
 import java.util.*
 
 class KeyLiteralParser(var str: String) {
@@ -95,6 +97,13 @@ class KeyLiteralParser(var str: String) {
     return parseEnum("vowel") { vowel: Int -> VowelTypingKeyAction(vowel) }
   }
 
+  private fun parseEnter(): KeyAction? {
+    if (!parseString("enter")) {
+      return null
+    }
+    return EnterKeyAction()
+  }
+
   private fun parseString(): KeyAction? {
     push()
     if (!parseChar('\'')) {
@@ -123,7 +132,12 @@ class KeyLiteralParser(var str: String) {
   }
 
   private fun parseLeafNode(): FlickNode? {
-    val action = parseConsonantEnum() ?: parseVowelEnum() ?: parseString() ?: return null
+    val action =
+      parseConsonantEnum() ?:
+      parseVowelEnum() ?:
+      parseEnter() ?:
+      parseString() ?:
+      return null
     return FlickNode(action)
   }
 
@@ -182,11 +196,7 @@ class KeyLiteralParser(var str: String) {
   }
 
   fun parse(): FlickNode {
-    val result = parseNode()
-    if (result == null) {
-      throw Exception("An error occurred while parsing $str")
-    }
-    return result
+    return parseNode() ?: throw Exception("An error occurred while parsing $str")
   }
 
 }
