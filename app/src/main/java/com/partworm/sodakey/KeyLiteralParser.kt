@@ -26,29 +26,27 @@ class KeyLiteralParser(var str: String) {
     posStack.push(pos)
   }
 
-  private fun pop() {
+  private fun <T> pop(): T? {
     pos = posStack.pop()
+    return null
   }
 
   private fun popAndDrop() {
     posStack.pop()
   }
 
-  private fun parseChar(ch: Char): Boolean {
+  private fun parseChar(ch: Char): Boolean? {
     if (ch() != ch) {
-      return false
+      return null
     }
     ++pos
     return true
   }
 
-  private fun parseString(str: String): Boolean {
+  private fun parseString(str: String): Boolean? {
     push()
     for (c in str.toCharArray()) {
-      if (!parseChar(c)) {
-        pop()
-        return false
-      }
+      parseChar(c) ?: return pop()
     }
     popAndDrop()
     return true
@@ -68,23 +66,10 @@ class KeyLiteralParser(var str: String) {
 
   private fun parseEnum(type: String, constr: (Int) -> KeyAction): KeyAction? {
     push()
-    if (!parseString(type)) {
-      pop()
-      return null
-    }
-    if (!parseChar('(')) {
-      pop()
-      return null
-    }
-    val id = parseNum()
-    if (id == null) {
-      pop()
-      return null
-    }
-    if (!parseChar(')')) {
-      pop()
-      return null
-    }
+    parseString(type) ?: return pop()
+    parseChar('(') ?: return pop()
+    val id = parseNum() ?: return pop()
+    parseChar(')') ?: return pop()
     popAndDrop()
     return constr(id)
   }
@@ -98,40 +83,39 @@ class KeyLiteralParser(var str: String) {
   }
 
   private fun parseEnter(): KeyAction? {
-    if (!parseString("enter")) {
-      return null
-    }
+    parseString("enter") ?: return null
     return EnterKeyAction()
   }
 
   private fun parseString(): KeyAction? {
     push()
-    if (!parseChar('\'')) {
-      pop()
-      return null
-    }
+    parseChar('\'') ?: return pop()
     val str = StringBuilder()
     while (hasNext() && ch() != '\'') {
       str.append(ch())
       ++pos
-      if (parseChar('\\')) {
+      if (parseChar('\\') != null) {
         if (!hasNext()) {
-          pop()
-          return null
+          return pop()
         }
         str.append(ch())
         ++pos
       }
     }
-    if (!parseChar('\'')) {
-      pop()
-      return null
-    }
+    parseChar('\'') ?: return pop()
     popAndDrop()
     return StringTypingKeyAction(str.toString())
   }
 
+  private fun parseNil(): FlickNode? {
+    parseString("nil") ?: return null
+    return FlickNode.NULL
+  }
+
   private fun parseLeafNode(): FlickNode? {
+    if (parseNil() != null) {
+      return FlickNode.NULL
+    }
     val action =
       parseConsonantEnum() ?:
       parseVowelEnum() ?:
@@ -143,50 +127,17 @@ class KeyLiteralParser(var str: String) {
 
   private fun parseInternalNode(): FlickNode? {
     push()
-    if (!parseChar('(')) {
-      return if (parseString("nil")) FlickNode.NULL else null
-    }
-    val root = parseLeafNode() ?: return null
-    if (!parseChar(' ')) {
-      pop()
-      return null
-    }
-    val left = parseNode()
-    if (left == null) {
-      pop()
-      return null
-    }
-    if (!parseChar(' ')) {
-      pop()
-      return null
-    }
-    val right = parseNode()
-    if (right == null) {
-      pop()
-      return null
-    }
-    if (!parseChar(' ')) {
-      pop()
-      return null
-    }
-    val up = parseNode()
-    if (up == null) {
-      pop()
-      return null
-    }
-    if (!parseChar(' ')) {
-      pop()
-      return null
-    }
-    val down = parseNode()
-    if (down == null) {
-      pop()
-      return null
-    }
-    if (!parseChar(')')) {
-      pop()
-      return null
-    }
+    parseChar('(') ?: return pop()
+    val root = parseLeafNode() ?: return pop()
+    parseChar(' ') ?: return pop()
+    val left = parseNode() ?: return pop()
+    parseChar(' ') ?: return pop()
+    val right = parseNode() ?: return pop()
+    parseChar(' ') ?: return pop()
+    val up = parseNode() ?: return pop()
+    parseChar(' ') ?: return pop()
+    val down = parseNode() ?: return pop()
+    parseChar(')') ?: return pop()
     popAndDrop()
     return FlickNode(root.action, left, right, up, down)
   }
